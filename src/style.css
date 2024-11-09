@@ -21,6 +21,10 @@ h1 {
     margin: auto;
 }
 
+#loading {
+    margin-top: 40%;
+}
+
 @media (max-width: 768px) {
     #map { 
         width: 300px; 

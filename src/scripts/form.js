@@ -1,5 +1,5 @@
 export const createForm = (parentElement) =>{
-    let data;
+    let data = [];
     let callback = null;
     return {  
       setLabels: (labels) => { data = labels; },  
@@ -18,6 +18,9 @@ export const createForm = (parentElement) =>{
         document.querySelector("#submit").onclick = () => {
           const result = data.map((name) => {
             return document.querySelector("#" + name).value;
+          });
+          data.forEach((element) => {
+            document.querySelector("#" + element).value = "";
           });
           callback(result);
         }          
