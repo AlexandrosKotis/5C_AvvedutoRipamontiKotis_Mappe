@@ -1,28 +1,15 @@
 export function createMap(parentElement) {
     const zoom = 12;
     const maxZoom = 19;
-    const places = new Array();
-    let map;
-    /*
-    [{
+    const places = [{
         name: "Piazza del Duomo",
         coords: [45.4639102, 9.1906426]
-     },
-     {
-        name: "Darsena",
-        coords: [45.4536286, 9.1755852]
-     },
-     {
-        name: "Parco Lambro",
-        coords: [45.4968296, 9.2505173]
-     },
-     {
-        name: "Stazione Centrale",
-        coords: [45.48760768, 9.2038215]
-     }];
-     */
+     }]
+    let map;
+
     return {
         render: (index) => {
+            if(!index) index = 0;
             if(map) map.remove();
             map = L.map(parentElement).setView(places[index].coords, zoom);
             L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
