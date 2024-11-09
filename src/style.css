@@ -3,11 +3,20 @@ html {
     height: 100%;
 }
 
-input[type="text"]{
+input[type="text"],h1{
     color: black !important;
+}
+
+h1 {
+    text-align: center !important;
+}
+
+.row {
+    margin: 5% !important;
 }
 
 #map { 
     width: 600px; 
-    height: 600px; 
+    height: 600px;
+    margin: auto;
 }
