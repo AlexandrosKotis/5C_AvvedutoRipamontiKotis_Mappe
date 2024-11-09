@@ -14,39 +14,20 @@ export function generateFetchComponent() {
                     .catch(reject);
             });
         },
-        setData: (data) => {
-            return new Promise((resolve, reject) => {
-                fetch(config.cacheURLSet, {
-                    method: "POST",
-                    headers: {
-                        "content-type": "application/json",
-                        "key": config.cacheToken
-                    },
-                    body: JSON.stringify({
-                        key: config.cacheKey,
-                        value: JSON.stringify(data)
-                    })
-                })
-                .then(r => r.json())
-                .then(data => resolve(data.result))
-                .catch(err => reject(err.result));
-            });
-        },
         getData: () => {
             return new Promise((resolve, reject) => {
-                fetch(config.cacheURLGet, {
-                    method: "POST",
-                    headers: {
-                        "content-type": "application/json",
-                        "key": config.cacheToken
-                    },
-                    body: JSON.stringify({
-                        key: config.cacheKey
+                fetch(`https://us1.locationiq.com/v1/search?key=${config.tokenLocationIq}&q=%TOKEN&q=%VALUE&format=json`)
+                    .then(response => response.json())
+                    .then((r) => {
+                        const lat = r[0].lat;
+                        const lon = r[0].lon;
+                        console.log(lat, lon);  
+                        resolve([lat, lon]); 
                     })
-                })
-                .then(r => r.json())
-                .then(data => resolve(data.result))
-                .catch(err => reject(err.result));
+                    .catch((error) => {
+                        console.error(error);
+                        reject(error);  
+                    });
             });
         }
     };
