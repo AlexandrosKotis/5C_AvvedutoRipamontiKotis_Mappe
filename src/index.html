@@ -14,17 +14,17 @@
 </head>
 
 <body>
-    <div class="grid grid-cols-2 gap-2">
+    <div class="grid sm:grid-cols-1 md:grid-cols-3 gap-2" id="grid-system">
         <div class="row">
-            <h1 class="text-5xl font-extrabold dark:text-white">Mappe<small class="ms-2 font-semibold text-gray-500 dark:text-gray-400">Pro</small></h1>
+            <h1 class="text-5xl font-extrabold dark:text-white">Mappe
+                <small class="ms-2 font-semibold text-gray-500 dark:text-gray-400">Pro</small>
+            </h1>
             <div id="app"></div>
         </div>
-        <div>
+        <div class="row">
             <div id="map" class="row"></div>
         </div>
     </div>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script type="module" src="./index.js"></script>
 </body>
 
