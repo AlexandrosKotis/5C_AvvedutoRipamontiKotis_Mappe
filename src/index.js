@@ -11,9 +11,8 @@ form.render();
 
 fetchComp.build("../../config.json").then(()=>{
     form.onsubmit((value) => {
-        fetchComp.getData(value).then((data)=>{
-            map.addPlace(value, data);
-            map.render();
+        fetchComp.getData(value[0]).then((data)=>{
+            map.addPlace(value[0], data).then(i => map.render(i)).catch(i => map.render(i));
         }).catch(console.error);
     });
     document.getElementById("map").innerHTML =

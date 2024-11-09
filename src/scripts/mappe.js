@@ -2,6 +2,7 @@ export function createMap(parentElement) {
     const zoom = 12;
     const maxZoom = 19;
     const places = new Array();
+    let map;
     /*
     [{
         name: "Piazza del Duomo",
@@ -21,8 +22,9 @@ export function createMap(parentElement) {
      }];
      */
     return {
-        render: () => {
-            let map = L.map(parentElement).setView(places[0].coords, zoom);
+        render: (index) => {
+            if(map) map.remove();
+            map = L.map(parentElement).setView(places[index].coords, zoom);
             L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: maxZoom,
                 attribution: '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -33,10 +35,18 @@ export function createMap(parentElement) {
             });
         },
         addPlace: (name, coords) => {
-            places.push({
-                name: name,
-                coords: coords
-            });
+            console.log(places);
+            return new Promise((resolve, reject) => {
+                if (places.some(place => place.name === name)) {
+                    return reject(places.length - 1);
+                }
+                places.push({
+                    name: name,
+                    coords: coords
+                });
+                resolve(places.length - 1);
+            })
+
         }
     }
 }
