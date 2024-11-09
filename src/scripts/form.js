@@ -19,9 +19,6 @@ export const createForm = (parentElement) =>{
           const result = data.map((name) => {
             return document.querySelector("#" + name).value;
           });
-          data.forEach((name) => {
-            result[name] = document.querySelector("#" + name).value;
-          });
           callback(result);
         }          
       },
