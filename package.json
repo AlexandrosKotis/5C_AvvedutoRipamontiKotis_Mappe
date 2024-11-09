@@ -1,0 +1,23 @@
+{
+  "name": "mappe",
+  "version": "1.0.0",
+  "description": "Copyright 2024 Angelo Ripamonti, Luca Avveduto e Alexandros Kotis",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm install -y && npx tailwindcss -i ./src/input.css -o ./src/output.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexandrosKotis/5C_AvvedutoRipamontiKotis_Mappe.git"
+  },
+  "author": "Luca,Angelo,Alex",
+  "license": "CC-BY-NC-ND-4.0",
+  "bugs": {
+    "url": "https://github.com/AlexandrosKotis/5C_AvvedutoRipamontiKotis_Mappe/issues"
+  },
+  "homepage": "https://github.com/AlexandrosKotis/5C_AvvedutoRipamontiKotis_Mappe#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.4.14"
+  }
+}
