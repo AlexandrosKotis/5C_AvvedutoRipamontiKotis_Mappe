@@ -14,9 +14,14 @@ export function generateFetchComponent() {
                     .catch(reject);
             });
         },
-        getData: () => {
+        getData: (value) => {
             return new Promise((resolve, reject) => {
-                fetch(`https://us1.locationiq.com/v1/search?key=${config.tokenLocationIq}&q=%TOKEN&q=%VALUE&format=json`)
+                let urlTemplate = "https://us1.locationiq.com/v1/search?key=$TOKEN&q=$VALUE&format=json";
+
+                urlTemplate = urlTemplate.replace("$TOKEN", config.tokenLocationIq);
+                urlTemplate = urlTemplate.replace("$VALUE", value);
+
+                fetch(urlTemplate)
                     .then(response => response.json())
                     .then((r) => {
                         const lat = r[0].lat;
