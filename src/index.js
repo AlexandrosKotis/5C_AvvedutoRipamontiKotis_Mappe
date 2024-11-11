@@ -24,5 +24,5 @@ fetchComp.build("../../config.json").then(()=>{
         </div>
       </div>`
     ;
-    map.render();
+    map.build();
 }).catch(console.error);

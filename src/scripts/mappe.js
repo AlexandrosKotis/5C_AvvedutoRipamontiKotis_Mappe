@@ -1,13 +1,18 @@
 export function createMap(parentElement) {
     const zoom = 12;
     const maxZoom = 19;
-    const places = [{
-        name: "Piazza del Duomo",
-        coords: [45.4639102, 9.1906426]
-     }]
+    const places = new Array();
     let map;
 
     return {
+        build: () => {
+            if(map) map.remove();
+            map = L.map(parentElement).setView([45.4639102, 9.1906426], zoom);
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: maxZoom,
+                attribution: '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }).addTo(map);
+        },
         render: (index) => {
             if(!index) index = 0;
             if(map) map.remove();
