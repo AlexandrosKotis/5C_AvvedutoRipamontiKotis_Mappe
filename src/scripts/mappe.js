@@ -3,26 +3,18 @@ export function createMap(parentElement) {
     const maxZoom = 19;
     const places = new Array();
     let map;
-    /*
-    [{
-        name: "Piazza del Duomo",
-        coords: [45.4639102, 9.1906426]
-     },
-     {
-        name: "Darsena",
-        coords: [45.4536286, 9.1755852]
-     },
-     {
-        name: "Parco Lambro",
-        coords: [45.4968296, 9.2505173]
-     },
-     {
-        name: "Stazione Centrale",
-        coords: [45.48760768, 9.2038215]
-     }];
-     */
+
     return {
+        build: () => {
+            if(map) map.remove();
+            map = L.map(parentElement).setView([45.4639102, 9.1906426], zoom);
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: maxZoom,
+                attribution: '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }).addTo(map);
+        },
         render: (index) => {
+            if(!index) index = 0;
             if(map) map.remove();
             map = L.map(parentElement).setView(places[index].coords, zoom);
             L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
